@@ -21,7 +21,9 @@ const mediaStreamConstraints = {
 const videoPlay = document.querySelector("video#player");
 const picture = document.querySelector("canvas#picture");
 picture.width = 640;
-picture.height = 480;
+picture.height = 360;
+const btn = document.getElementById("TakePhoto");
+const filtersSelect = document.getElementById("filter");
 
 navigator.mediaDevices
   .getUserMedia(mediaStreamConstraints)
@@ -32,15 +34,16 @@ navigator.mediaDevices
     console.log("navigator.getUserMedia error: ", e);
   });
 
-const btn = document.getElementById("TakePhoto");
 btn.onclick = function () {
+  // 增加滤镜
+  picture.className = filtersSelect.value;
   picture
     .getContext("2d")
     .drawImage(videoPlay, 0, 0, picture.width, picture.height);
 };
 
-function downLoad(instance) {
-  const picInfo = instance.toDataURL({
+function downLoad() {
+  const picInfo = picture.toDataURL({
     type: "png",
     pixelRatio: 1.5,
     backgroundColor: "white",
@@ -54,5 +57,5 @@ function downLoad(instance) {
 }
 
 document.querySelector("button#save").onclick = function () {
-  downLoad(picture);
+  downLoad();
 };

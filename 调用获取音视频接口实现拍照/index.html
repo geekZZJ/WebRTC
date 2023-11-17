@@ -2,20 +2,49 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>webrtc</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>webrtc</title>
+     <style>
+          .none {
+               -webkit-filter: none;
+          }
+
+          .blur {
+               -webkit-filter: blur(3px);
+          }
+
+          .grayscale {
+               -webkit-filter: grayscale(1);
+          }
+
+          .invert {
+               -webkit-filter: invert(1);
+          }
+
+          .sepia {
+               -webkit-filter: sepia(1);
+          }
+     </style>
 </head>
 
 <body>
-  <h1>Realtime communication with WebRTC</h1>
-  <video autoplay id="player"></video>
-  <br />
-  <button id="TakePhoto">Take</button>
-  <button id="save">保存</button>
-  <br />
-  <canvas id="picture"></canvas>
-  <script src="./index.js"></script>
+     <h1>Realtime communication with WebRTC</h1>
+     <video autoplay id="player"></video>
+     <br />
+     <select id="filter">
+          <option value="none">None</option>
+          <option value="blur">blur</option>
+          <option value="grayscale">Grayscale</option>
+          <option value="invert">Invert</option>
+          <option value="sepia">sepia</option>
+     </select>
+     <button id="TakePhoto">Take</button>
+     <button id="save">保存</button>
+     <br />
+     <canvas id="picture"></canvas>
+
+     <script src="./index.js"></script>
 </body>
 
 </html>
